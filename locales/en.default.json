@@ -1,92 +1,92 @@
 {
-    "general": {
-        "shop": {
-            "name": "{{ name }}",
-            "description": "Artisnal goods.",
-            "sub_description": "For a life well lived"
-        },
-        "about": {
-          "title": "About Us",
-          "descrption": " We're a lifestyle shop selling a limited assortment of products handmade in our Silver Lake, Los Angeles studio. We are fueled by the joys we've found in some of life's simplest things, and we apply that joy to each of our creations."
-        },
-        "search": {
-          "search": "Search",
-          "reset": "Clear search term"
-        },
-        "404": {
-          "title": "Sorry, we can’t find that page.",
-          "back": "Back to Wellby"
-        }
+  "general": {
+    "shop": {
+      "name": "{{ name }}",
+      "description": "Artisanal goods.",
+      "sub_description": "For a life well lived"
     },
-    "header": {
-      "nav": {
-          "shop": "Shop"
-      }
+    "about": {
+      "title": "About Us",
+      "descrption": " We're a lifestyle shop selling a limited assortment of products handmade in our Silver Lake, Los Angeles studio. We are fueled by the joys we've found in some of life's simplest things, and we apply that joy to each of our creations."
     },
-    "footer": {
-        "bottom": {
-            "copyright": "©{{ date }} {{ name }} Inc."
-        },
-        "list": {
-          "products": "Our Products"
-        },
-        "social": {
-          "facebook_url": "https://www.facebook.com/superhidotcom/",
-          "instagram_handle": "Superhi",
-          "alt": "Wellby on {{ social }}"
-        }
+    "search": {
+      "search": "Search",
+      "reset": "Clear search term"
     },
-    "product": {
-      "card": {
-        "options": "{{ optionCount }} options",
-        "more_info": "More Info"
-      },
-      "form": {
-        "quantity": "Quantity",
-        "submit": "Add to Cart",
-        "sold_out": "Sold Out"
-      }
-    },
-    "cart": {
-        "button": {
-          "count_html": "Cart (<span class=\"js-cart-item-count\">{{ itemCount }}<\/span>)",
-          "close": "Close"
-        },
-        "empty": {
-          "title": "Your cart is empty",
-          "button": "Keep Shopping"
-        },
-        "filled": {
-          "title": "Your Cart",
-          "subtotal": "Subtotal",
-          "button": "Checkout"
-        }
-      },
-      "localization": {
-        "country_label": "Country/region",
-        "language_label": "Language",
-        "update_language": "Update language",
-        "update_country": "Update country/region",
-        "search": "Search",
-        "popular_countries_regions": "Popular countries/regions",
-        "country_results_count": "{{ count }} countries/regions found"
-      },
-      "accessibility": {
-        "skip_to_text": "Skip to content",
-        "skip_to_product_info": "Skip to product information",
-        "close": "Close",
-        "unit_price_separator": "per",
-        "vendor": "Vendor:",
-        "error": "Error",
-        "refresh_page": "Choosing a selection results in a full page refresh.",
-        "link_messages": {
-          "new_window": "Opens in a new window.",
-          "external": "Opens external website."
-        },
-        "loading": "Loading...",
-        "total_reviews": "total reviews",
-        "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
-        "collapsible_content_title": "Collapsible content",
-        "complementary_products": "Complementary products"
-      }
+    "404": {
+      "title": "Sorry, we can’t find that page.",
+      "back": "Back to Wellby"
     }
+  },
+  "header": {
+    "nav": {
+      "shop": "Shop"
+    }
+  },
+  "footer": {
+    "bottom": {
+      "copyright": "©{{ date }} {{ name }} Inc."
+    },
+    "list": {
+      "products": "Our Products"
+    },
+    "social": {
+      "facebook_url": "https:\/\/www.facebook.com\/superhidotcom\/",
+      "instagram_handle": "Superhi",
+      "alt": "Wellby on {{ social }}"
+    }
+  },
+  "product": {
+    "card": {
+      "options": "{{ optionCount }} options",
+      "more_info": "More Info"
+    },
+    "form": {
+      "quantity": "Quantity",
+      "submit": "Add to Cart",
+      "sold_out": "Sold Out"
+    }
+  },
+  "cart": {
+    "button": {
+      "count_html": "Cart (<span class=\"js-cart-item-count\">{{ itemCount }}<\/span>)",
+      "close": "Close"
+    },
+    "empty": {
+      "title": "Your cart is empty",
+      "button": "Keep Shopping"
+    },
+    "filled": {
+      "title": "Your Cart",
+      "subtotal": "Subtotal",
+      "button": "Checkout"
+    }
+  },
+  "localization": {
+    "country_label": "Country\/region",
+    "language_label": "Language",
+    "update_language": "Update language",
+    "update_country": "Update country\/region",
+    "search": "Search",
+    "popular_countries_regions": "Popular countries\/regions",
+    "country_results_count": "{{ count }} countries\/regions found"
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "skip_to_product_info": "Skip to product information",
+    "close": "Close",
+    "unit_price_separator": "per",
+    "vendor": "Vendor:",
+    "error": "Error",
+    "refresh_page": "Choosing a selection results in a full page refresh.",
+    "link_messages": {
+      "new_window": "Opens in a new window.",
+      "external": "Opens external website."
+    },
+    "loading": "Loading...",
+    "total_reviews": "total reviews",
+    "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
+    "collapsible_content_title": "Collapsible content",
+    "complementary_products": "Complementary products"
+  }
+}
