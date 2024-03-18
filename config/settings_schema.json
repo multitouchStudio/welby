@@ -1,0 +1,26 @@
+[
+    {
+        "name": "theme_info",
+        "theme_name": "Generated Data Theme",
+        "theme_version": "1.0.0",
+        "theme_author": "Multitouch",
+        "theme_documentation_url": "https:\/\/multitouch.studio",
+        "theme_support_url": "https:\/\/multitouch.studio"
+    },
+    {
+        "name": "General",
+        "settings": [
+            {
+                "type": "header",
+                "content": "General Store Settings"
+            },
+            {
+                "type": "text",
+                "id": "store_name_custom",
+                "label": "Custom Store Name",
+                "default": "USE_DEFAULT",
+                "info":  "Enter a custom name for the store to display across your theme, or type 'USE_DEFAULT' to explicitly use the Shopify store name. Leaving this field blank will also default to the Shopify store name."
+            }
+        ]
+    }
+]
