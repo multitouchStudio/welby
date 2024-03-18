@@ -631,6 +631,10 @@ video {
   margin-top: 32px;
   margin-bottom: 32px;
 }
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 .mt-2 {
   margin-top: 8px;
 }
@@ -726,6 +730,9 @@ video {
 }
 .w-full {
   width: 100%;
+}
+.max-w-6xl {
+  max-width: 72rem;
 }
 .flex-shrink {
   flex-shrink: 1;
@@ -1577,6 +1584,10 @@ video {
   padding-top: 24px;
   padding-bottom: 24px;
 }
+.px-4 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
 .text-left {
   text-align: left;
 }
@@ -2048,6 +2059,11 @@ video {
   }
 }
 @media (min-width: 768px) {
+
+  .md\:my-16 {
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
 
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));

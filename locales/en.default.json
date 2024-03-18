@@ -36,6 +36,17 @@
           "alt": "Wellby on {{ social }}"
         }
     },
+    "product": {
+      "card": {
+        "options": "{{ optionCount }} options",
+        "more_info": "More Info"
+      },
+      "form": {
+        "quantity": "Quantity",
+        "submit": "Add to Cart",
+        "sold_out": "Sold Out"
+      }
+    },
     "cart": {
         "button": {
           "count_html": "Cart (<span class=\"js-cart-item-count\">{{ itemCount }}<\/span>)",
