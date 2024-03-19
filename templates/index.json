@@ -1,11 +1,7 @@
 {
     "sections": {
-
-        "featured-collection":{
-            "type": "template-product",
-            "settings": {
-                "featured_collection":"all"
-            }
+        "featured-collection": {
+            "type": "featured-collection"
         }
     },
     "order": ["featured-collection"]
