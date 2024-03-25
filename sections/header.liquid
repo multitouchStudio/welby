@@ -1,20 +1,25 @@
-<header class="mx-auto container">
-    <a href="/">
-    {% if section.settings.header_logo %}
-        <img width="116" height="46" src="{{ section.settings.header_logo | image_url }}" alt="{{ shop.name | escape }}" loading="lazy" />
-    {% else %}
-        {% capture store_name %}
-            {% if settings.store_name_custom != blank and settings.store_name_custom != 'USE_DEFAULT' %}
-                {{ settings.store_name_custom }}
+<header class="relative bg-w border">
+   <div class="mx-auto px-4 sm:px-6">
+    <div class="flex justify-center items-center py-6 md:justify-start md:space-x-10">
+        <div class="flex justify-start lg:flex-1 truncate">
+            <a href="/">
+            {% if section.settings.header_logo %}
+                <img width="116" height="46" src="{{ section.settings.header_logo | image_url }}" alt="{{ shop.name | escape }}" loading="lazy" />
             {% else %}
-                {{ shop.name }}
+                {% capture store_name %}
+                    {% if settings.store_name_custom != blank and settings.store_name_custom != 'USE_DEFAULT' %}
+                        {{ settings.store_name_custom }}
+                    {% else %}
+                        {{ shop.name }}
+                    {% endif %}
+                {% endcapture %}
+                {{ 'general.shop.name' | t: name: store_name }}
             {% endif %}
-        {% endcapture %}
-        {{ 'general.shop.name' | t: name: store_name }}
-    {% endif %}
-</a>
-
-    {% comment %} {% if settings.header_menu_handles %}
+        </a>
+    </div>
+    
+    <div class="md:flex space-x-10">
+   {% comment %} {% if settings.header_menu_handles %}
         {% assign menuHandles = settings.header_menu_handles | split: ',' %}
         {% for handle in menuHandles %}
             {% assign menu = linklists[handle] %}
@@ -38,22 +43,63 @@
                 <p>Menu with handle "{{ handle }}" not found.</p>
             {% endif %}
         {% endfor %}
-    {% endif %}
-    <a href="/search">Search</a> {% endcomment %}
+    {% endif %} {% endcomment %}
+    {% for link in section.settings.menu.links %}
+        {% if link.links != blank %}
+            <div class="relative">
+                <button class="inline-flex items-center">
+                    {{ link.title }}
+                    {% render 'icon-dropdown' %}
+                </button>
+            </div>
+        {% else %}
+            <a href="{{ link.url }}" class="text-base text-grey-500 hover:text-grey-500">{{ link.title }}</a>
+        {% endif %}
+    {% endfor %}
+    </div>
+    <a href="/search">Search</a>
     {% if settings.enable_currency_selector %}
         <div class="currency-area">
-            {% form 'currency' %}
-                {{ form |  currency_selector }}
-            {% endform %}
+            {% if localization.available_countries.size > 1 %}
+                <localization-form>
+                  {% form 'localization' %}
+                    <div class="disclosure">
+                      <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="CountryList">
+                        {{ localization.country.name | upcase }}
+              
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                          </svg>
+                      </button>
+              
+                      <ul id="CountryList" role="list" class="disclosure__list" hidden>
+                        {% for country in localization.available_countries %}
+                          <li class="disclosure__item" tabindex="-1">
+                            <a href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
+                              {{ country.name | upcase }} <span class="currency-symbol">{{ country.currency.symbol }}</span>
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+              
+                      <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+                    </div>
+                  {% endform %}
+                </localization-form>
+              {% endif %}
+              
+              
+                
         </div>
     {% endif %}
     {% assign cart_text = 'cart.button.count_html' | t: itemCount: cart.item_count %}
-    {% assign cart_close_text = 'cart.button.close' | t %}
+    {% comment %} {% assign cart_close_text = 'cart.button.close' | t %} {% endcomment %}
     <a href="/cart" class="cart-link text-link">
         <span class="cart-text">{{ cart_text }}</span>
-        <span class="cart-close-text">{{ cart_close_text }}</span>
+        {% comment %} <span class="cart-close-text">{{ cart_close_text }}</span> {% endcomment %}
     </a>
-    
+    </div>
+    </div>
 </header>
 
 
@@ -65,6 +111,13 @@
             "id": "header_logo",
             "label": "Header Logo",
             "info": "Upload a logo for the header."
-        }]
+        },
+        {
+            "type": "link_list",
+            "id": "menu",
+            "default": "main-menu",
+            "label": "Add Menu"
+        }
+    ]
     }
 {% endschema %}
