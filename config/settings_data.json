@@ -1,6 +1,12 @@
 {
-    "current": "Default",
-    "presets": {
-      "Default": {}
+  "current": {
+    "enable_currency_selector": true,
+    "content_for_index": [
+
+    ]
+  },
+  "presets": {
+    "Default": {
     }
+  }
 }
