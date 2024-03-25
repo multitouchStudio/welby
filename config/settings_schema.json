@@ -22,5 +22,53 @@
                 "info":  "Enter a custom name for the store to display across your theme, or type 'USE_DEFAULT' to explicitly use the Shopify store name. Leaving this field blank will also default to the Shopify store name."
             }
         ]
+
+    },
+    {
+        "name": "Store Settings",
+        "settings": [
+           {
+                "type":  "header",
+                "content": "Currency"
+           },
+           {
+             "type": "checkbox",
+             "id": "enable_currency_selector",
+             "label": "Enable Currency Selector",
+             "default": false
+           } 
+        ]
+    },
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Header Settings"
+            },
+            {
+                "type": "text",
+                "id": "header_menu_handles",
+                "label": "Header Menu Handles",
+                "default": "main-menu",
+                "info":  "Enter the handles of the menus you want to display in the header, separated by a comma (e.g., 'main-menu,about-menu,contact-menu')."
+            }
+        ]
+    },
+    {
+        "name": "Footer",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Footer Settings"
+            },
+            {
+                "type": "text",
+                "id": "footer_menu_handles",
+                "label": "Footer Menu Handles",
+                "default": "footer",
+                "info":  "Enter the handles of the menus you want to display in the header, separated by a comma (e.g., 'footer, main-menu')."
+            }
+        ]
     }
 ]

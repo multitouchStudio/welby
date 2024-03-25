@@ -1,8 +1,11 @@
 {
     "sections": {
+        "main": {
+            "type": "main-section"
+        },
         "featured-collection": {
             "type": "featured-collection"
         }
     },
-    "order": ["featured-collection"]
+    "order": ["main", "featured-collection"]
 }

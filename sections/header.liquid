@@ -1,0 +1,70 @@
+<header class="mx-auto container">
+    <a href="/">
+    {% if section.settings.header_logo %}
+        <img width="116" height="46" src="{{ section.settings.header_logo | image_url }}" alt="{{ shop.name | escape }}" loading="lazy" />
+    {% else %}
+        {% capture store_name %}
+            {% if settings.store_name_custom != blank and settings.store_name_custom != 'USE_DEFAULT' %}
+                {{ settings.store_name_custom }}
+            {% else %}
+                {{ shop.name }}
+            {% endif %}
+        {% endcapture %}
+        {{ 'general.shop.name' | t: name: store_name }}
+    {% endif %}
+</a>
+
+    {% comment %} {% if settings.header_menu_handles %}
+        {% assign menuHandles = settings.header_menu_handles | split: ',' %}
+        {% for handle in menuHandles %}
+            {% assign menu = linklists[handle] %}
+            {% if menu %}
+                <nav aria-label="{{ menu.title }}">
+                    <div class="nav-list">
+                        {% for link in menu.links %}
+                            {% assign child_list_handle = link.title | handleize %}
+                            {% if linklists[child_list_handle].links != blank %}
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                                [{% for childlink in linklists[child_list_handle].links %}
+                                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                {% endfor %}]
+                            {% else %}
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </nav>
+            {% else %}
+                <p>Menu with handle "{{ handle }}" not found.</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <a href="/search">Search</a> {% endcomment %}
+    {% if settings.enable_currency_selector %}
+        <div class="currency-area">
+            {% form 'currency' %}
+                {{ form |  currency_selector }}
+            {% endform %}
+        </div>
+    {% endif %}
+    {% assign cart_text = 'cart.button.count_html' | t: itemCount: cart.item_count %}
+    {% assign cart_close_text = 'cart.button.close' | t %}
+    <a href="/cart" class="cart-link text-link">
+        <span class="cart-text">{{ cart_text }}</span>
+        <span class="cart-close-text">{{ cart_close_text }}</span>
+    </a>
+    
+</header>
+
+
+{% schema %}
+    {
+        "name": "Header",
+        "settings": [{
+            "type": "image_picker",
+            "id": "header_logo",
+            "label": "Header Logo",
+            "info": "Upload a logo for the header."
+        }]
+    }
+{% endschema %}

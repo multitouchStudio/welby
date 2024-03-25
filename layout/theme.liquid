@@ -11,12 +11,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,,chrome=1">
         <meta name="viewport" content="{{ page_description | escape }}">
         <link rel="canonical" href="{{ canonical_url }}">
+  
         
         {% if page_description %}
             <meta name="description" content="{{ page_description | escape }}">
         {% endif %}
         
         {{ content_for_header }}
+        {{ 'swiper-bundle.min.css' |  asset_url |  stylesheet_tag }}
         {{ 'style.css' |  asset_url |  stylesheet_tag }}
     
         </head>
@@ -24,9 +26,11 @@
         {% sections 'header-group' %}
         <main role="main" id="MainContent" class="container mx-auto">
             {{ content_for_layout }}
+            {% sections 'footer-group' %}
         </main>
-        {% sections 'footer-group' %}
-
+        
+        <script src="{{ 'swiper-bundle.min.js' |  asset_url }}" defer="defer"></script>
+        <script src="{{ 'global.js' |  asset_url }}" defer="defer"></script>
         <script>
             window.shopUrl = '{{ request.origin }}';
             window.routes = {

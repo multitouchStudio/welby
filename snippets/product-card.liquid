@@ -1,30 +1,27 @@
-<div class="w-full py-6 px-3">
-  <div class="border bg-white shadow-lg rounded-lg overflow-hidden">
-    <a href="{{product_product.url}}">
-      {% if product_product.featured_image %}
-        <div class="h-80 overflow-hidden">
-          <img
-            class="w-full h-full object-cover transition duration-1000 ease-in-out hover:scale-110 transform"
-            src="{{product_product.featured_image | img_url: 'medium' }}"
-            alt="{{product_product.featured_image.alt}}">
+<div class="product-card">
+  <div class="card-info">
+    <a href="{{ product_product.url }}">
+    {{ product_product.title }}
+    <span>{{ product_product.price | money_without_trailing_zeros }}</span>
+  </a>
+  <p>{{ product_product.description |  strip_html | split: '.' | first | append: '.' }}</p>
+    {% if product_product.variants.size > 1 %}
+      {{ 'product.card.options' | t: optionCount: product_product.variants.size }} &mdash;
+    {% endif %}
 
-        </div>
-      {% else %}
-        {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-cover' }}
-
-
-      {% endif %}
-
-    </a>
-    <div class="flex flex-col p-4">
-      <a class="text-gray-700 uppercase font-medium" href="{{product_product.url}}">{{ product_product.title }}</a>
-      <span class="text-sm">{{ product_product.vendor }}</span>
-      <p class="text-gray-500">{{ product_product.price | money }}</p>
-
-
-    </div>
-
-
-
+    {% if product_product.available %}
+      <a href="{{ product_product.url }}">{{ 'product.card.more_info' | t }}</a>
+    {% else %}
+      {{ 'product.form.sold_out' | t }}
+    {% endif %}
   </div>
+
+  <div class="card-image">
+
+  <a href="{{ product_product.url }}">
+    <img width="1200" height="900px" src="{{ product_product.featured_image | image_url }}" alt="{{ product_product.featured_image.alt | escape }}" loading="lazy" />
+  </a>
+  </div>
+
+ 
 </div>
