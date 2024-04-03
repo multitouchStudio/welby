@@ -53,13 +53,16 @@
                 </button>
             </div>
         {% else %}
-            <a href="{{ link.url }}" class="text-base text-grey-500 hover:text-grey-500">{{ link.title }}</a>
+            <a href="{{ link.url }}" class="text-base text-grey-500 hover:text-grey-700">{{ link.title }}</a>
         {% endif %}
     {% endfor %}
     </div>
-    <a href="/search">Search</a>
+    
+    {% comment %} cart button/account {% endcomment %}
+    <div class="hidden md:flex item-center justify-end md:flex-1 space-x-1">
+        <a class="px-4" href="/search">Search</a>
     {% if settings.enable_currency_selector %}
-        <div class="currency-area">
+        <div class="currency-area px-4">
             {% if localization.available_countries.size > 1 %}
                 <localization-form>
                   {% form 'localization' %}
@@ -84,40 +87,85 @@
               
                       <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
                     </div>
-                  {% endform %}
-                </localization-form>
-              {% endif %}
-              
-              
-                
-        </div>
+                {% endform %}
+        </localization-form>
     {% endif %}
-    {% assign cart_text = 'cart.button.count_html' | t: itemCount: cart.item_count %}
-    {% comment %} {% assign cart_close_text = 'cart.button.close' | t %} {% endcomment %}
-    <a href="/cart" class="cart-link text-link">
-        <span class="cart-text">{{ cart_text }}</span>
-        {% comment %} <span class="cart-close-text">{{ cart_close_text }}</span> {% endcomment %}
-    </a>
-    </div>
+            </div>
+            {% endif %}
+          
+            {% if shop.customer_accounts_enabled %}
+                {% if customer %}
+                    <a class="px-4 whitespace-nowrap text-base text-gray-500 hover:text-gray-900" href="{{ routes.account_url }}">
+                        {% render 'icon-login-plus' %}
+                    </a>
+                {% else %}
+                    <a href="{{ routes.account_login_url }}">{% render 'icon-login' %}</a>
+                {% endif %}
+            {% endif %}
+            
+                <a href="/cart" class="px-4 whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
+                    {% render 'icon-shopping-bag' %}
+                </a>
+            </div>
+        </div>
     </div>
 </header>
 
 
 {% schema %}
     {
-        "name": "Header",
-        "settings": [{
-            "type": "image_picker",
-            "id": "header_logo",
-            "label": "Header Logo",
-            "info": "Upload a logo for the header."
-        },
-        {
-            "type": "link_list",
-            "id": "menu",
-            "default": "main-menu",
-            "label": "Add Menu"
-        }
-    ]
+            "name": "Header",
+            "settings": [{
+                "type": "image_picker",
+                "id": "header_logo",
+                "label": "Header Logo",
+                "info": "Upload a logo for the header."
+            },
+            {
+                "type": "link_list",
+                "id": "menu",
+                "default": "main-menu",
+                "label": "Add Menu"
+            }
+        ],
+        "blocks": [{
+        "type": "checkbox",
+        "name": "Mega Logo",
+        "settings": [
+            {
+            "type": "checkbox",
+            "id": "menu_enable",
+            "label": "Enable this section",
+            "default": true
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "mega_link",
+                "label": "Select Menu",
+                "default": "1"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Main Link"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "subtitle",
+                "label": "subtitle"
+            }
+        
+        ]
+        }]
     }
 {% endschema %}
