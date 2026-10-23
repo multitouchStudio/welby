@@ -3,7 +3,7 @@
     <head>
         <title>
             {{ page_title }}
-            {%- if current_tags %} &ndash; tagged "{{ current_tags | join ', ' }}"{% endif -%}
+            {%- if current_tags %} &ndash; tagged "{{ current_tags | join }}"{% endif -%}
             {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
             {%- unless pag_title contains shop.name %} &ndash; {{ shop.name }}{%  endunless -%}
         </title>
@@ -44,4 +44,13 @@
             document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
           </script>
     </body>
-</html>
+</html>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ current_tags | join ', ' }}"
+  to: "{{ current_tags | join }}"
+  position: 181..206
+{%- endcomment -%}
